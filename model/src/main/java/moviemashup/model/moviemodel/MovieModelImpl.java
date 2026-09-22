@@ -1,4 +1,4 @@
-package moviemashup.model;
+package moviemashup.model.moviemodel;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +10,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.sun.tools.javac.Main;
+import moviemashup.model.entities.Movie;
+import moviemashup.model.entities.VisualisationInfo;
+import moviemashup.model.exception.MovieNotFoundException;
 
 public class MovieModelImpl implements MovieModel{
     private List<Movie> movies;

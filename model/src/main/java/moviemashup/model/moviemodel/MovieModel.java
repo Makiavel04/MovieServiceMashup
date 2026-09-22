@@ -1,4 +1,7 @@
-package moviemashup.model;
+package moviemashup.model.moviemodel;
+
+import moviemashup.model.entities.Movie;
+import moviemashup.model.exception.MovieNotFoundException;
 
 import java.time.LocalDate;
 import java.util.List;

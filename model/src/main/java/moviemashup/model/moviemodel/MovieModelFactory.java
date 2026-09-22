@@ -1,4 +1,4 @@
-package moviemashup.model;
+package moviemashup.model.moviemodel;
 
 public class MovieModelFactory {
 

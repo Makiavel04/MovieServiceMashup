@@ -1,4 +1,4 @@
-package moviemashup.model;
+package moviemashup.model.exception;
 
 public class MovieNotFoundException extends Exception {
     public MovieNotFoundException(String title) {
