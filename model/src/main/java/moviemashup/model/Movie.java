@@ -6,12 +6,12 @@ import java.util.List;
 public class Movie {
     private String title;
     private short year;
-    private List<VisualisationInfo> visualisationInfoList;
+    private VisualisationInfo visualisationInfo;
 
-    public Movie(short year, String title) {
+    public Movie(short year, String title, VisualisationInfo visualisationInfo) {
         this.year = year;
         this.title = title;
-        this.visualisationInfoList = new ArrayList<>();
+        this.visualisationInfo = visualisationInfo;
     }
 
     public short getYear() {
@@ -30,11 +30,11 @@ public class Movie {
         this.title = title;
     }
 
-    public List<VisualisationInfo> getVisualisationInfoList() {
-        return visualisationInfoList;
+    public VisualisationInfo getVisualisationInfo() {
+        return visualisationInfo;
     }
 
-    public void setVisualisationInfoList(List<VisualisationInfo> visualisationInfoList) {
-        this.visualisationInfoList = visualisationInfoList;
+    public void setVisualisationInfo(VisualisationInfo visualisationInfo) {
+        this.visualisationInfo = visualisationInfo;
     }
 }
