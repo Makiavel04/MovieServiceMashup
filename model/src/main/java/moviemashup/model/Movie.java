@@ -1,12 +1,18 @@
 package moviemashup.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Movie {
     private String title;
     private short year;
+    @JsonProperty("visualisationinfo")
     private VisualisationInfo visualisationInfo;
+
+    public Movie(){
+        super();
+    }
 
     public Movie(short year, String title, VisualisationInfo visualisationInfo) {
         this.year = year;

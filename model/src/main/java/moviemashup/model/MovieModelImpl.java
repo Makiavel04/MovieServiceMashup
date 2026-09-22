@@ -1,15 +1,28 @@
 package moviemashup.model;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.sun.tools.javac.Main;
 
 public class MovieModelImpl implements MovieModel{
     private List<Movie> movies;
 
     public MovieModelImpl() {
-        this.movies = new ArrayList<>();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        try (InputStream is = Main.class.getClassLoader().getResourceAsStream("movies_100.json")) {
+            this.movies = mapper.readValue(is, new TypeReference<>(){});
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

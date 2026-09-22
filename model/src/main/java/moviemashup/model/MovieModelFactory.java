@@ -11,6 +11,7 @@ public class MovieModelFactory {
         if(model != null){
             return model;
         }
-        return new MovieModelImpl();
+        model = new MovieModelImpl();
+        return model;
     }
 }
