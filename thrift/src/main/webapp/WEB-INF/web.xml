@@ -12,13 +12,13 @@
     <!-- Thrift service -->
 
     <servlet>
-        <servlet-name>ThriftCalculatorServiceServlet</servlet-name>
-        <servlet-class>org.example.server.ThrifCalculatorServiceServlet</servlet-class>
+        <servlet-name>ThriftMovieServiceServlet</servlet-name>
+        <servlet-class>moviemashup.thrift.server.ThriftMovieServiceServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ThriftCalculatorServiceServlet</servlet-name>
-        <url-pattern>/thrift/calculator</url-pattern>
+        <servlet-name>ThriftMovieServiceServlet</servlet-name>
+        <url-pattern>/thrift/movie</url-pattern>
     </servlet-mapping>
 
     <!-- General configuration -->

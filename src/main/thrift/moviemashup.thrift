@@ -15,7 +15,7 @@ exception ServiceMovieNotFoundException {
 }
 service MovieService {
     void addMovie(1: MovieDto  movie),
-    MovieDto findMovieByTitle(1: string title) throws (1: ServiceMovieNotFoundException),
+    MovieDto findMovieByTitle(1: string title) throws (1: ServiceMovieNotFoundException e),
     list<MovieDto> findMoviesByYear(1: short year)
 }
 
