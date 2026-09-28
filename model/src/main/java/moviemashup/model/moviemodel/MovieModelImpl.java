@@ -9,7 +9,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.sun.tools.javac.Main;
 import moviemashup.model.entities.Movie;
 import moviemashup.model.entities.VisualisationInfo;
 import moviemashup.model.exception.MovieNotFoundException;
@@ -21,7 +20,7 @@ public class MovieModelImpl implements MovieModel{
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        try (InputStream is = Main.class.getClassLoader().getResourceAsStream("movies_100.json")) {
+        try (InputStream is = MovieModelImpl.class.getClassLoader().getResourceAsStream("movies_100.json")) {
             this.movies = mapper.readValue(is, new TypeReference<>(){});
         } catch (IOException e) {
             throw new RuntimeException(e);
