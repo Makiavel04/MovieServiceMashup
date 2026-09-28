@@ -18,10 +18,24 @@ public class MovieToThriftMovieDtoConversor {
     }
 
     public static MovieDto toMovieDto(Movie movie){
-        return new MovieDto(movie.getTitle(), movie.getYear(), movie.getVisualisationInfo().getVisualisationDate().toString(), movie.getVisualisationInfo().getPunctuation());
+        String visuDate; short pts;
+        if(movie.getVisualisationInfo() != null){
+            visuDate = movie.getVisualisationInfo().getVisualisationDate()!=null ? movie.getVisualisationInfo().getVisualisationDate().toString() : "";
+            pts = movie.getVisualisationInfo().getPunctuation();
+        }else{
+            visuDate = "";
+            pts = -1;
+        }
+        return new MovieDto(movie.getTitle(), movie.getYear(), visuDate, pts);
     }
 
     public static Movie toMovie(MovieDto movie) {
-        return new Movie(movie.getYear(), movie.getTitle(), new VisualisationInfo(movie.getPoints(), LocalDate.parse(movie.getVisualisationDate())));
+        VisualisationInfo vi;
+        if((movie.getPoints()!=-1) && !movie.getVisualisationDate().isEmpty()){
+            vi = new VisualisationInfo(movie.getPoints(), LocalDate.parse(movie.getVisualisationDate()));
+        }else{
+            vi = null;
+        }
+        return new Movie(movie.getYear(), movie.getTitle(), vi);
     }
 }
