@@ -28,7 +28,7 @@ public class MovieModelImpl implements MovieModel{
     }
 
     @Override
-    public void addMovie(String title, short year, LocalDate visualisationDate, short punctuation) {
+    public synchronized void addMovie(String title, short year, LocalDate visualisationDate, short punctuation) {
         VisualisationInfo visualisationInfo = new VisualisationInfo(punctuation,visualisationDate);
         Movie movie = new Movie(year,title,visualisationInfo);
         movies.add(movie);

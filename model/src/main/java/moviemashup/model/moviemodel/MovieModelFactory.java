@@ -7,7 +7,7 @@ public class MovieModelFactory {
     private MovieModelFactory(){
         super();
     }
-    public static MovieModel getModel(){
+    public synchronized static MovieModel getModel(){
         if(model != null){
             return model;
         }
