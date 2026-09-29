@@ -15,11 +15,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class TMDbClientImpl implements MovieInformationClient{
-    private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
     private static final HttpClient client = HttpClient.newHttpClient();
 
     @Override
     public MovieInfoDto findMovieInformation(String title) throws MovieInfoNotFoundException {
+        String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
         MovieInfoDto movieInfoDto = new MovieInfoDto();
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -35,8 +35,9 @@ public class TMDbClientImpl implements MovieInformationClient{
         }
 
         String genresUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key="+API_KEY;
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(genresUrl)).GET().build();
         try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(genresUrl)).GET().build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             JsonNode rootNode = objectMapper.readTree(response.body());
             JsonNode genresNode = rootNode.path("genres");
@@ -56,7 +57,6 @@ public class TMDbClientImpl implements MovieInformationClient{
             JsonNode resultsNode = rootNode.path("results");
             JsonNode movieNode = rootNode.path("results").get(0);
 
-            if(resultsNode.isArray() && !resultsNode.isEmpty()){
                 String movieTitle = movieNode.path("title").asText();
                 movieInfoDto.setTitle(movieTitle);
 
@@ -120,7 +120,7 @@ public class TMDbClientImpl implements MovieInformationClient{
                     }
                 }
                 movieInfoDto.setCharacters(characters);
-            }
+
         } catch (Exception e) {
             throw new MovieInfoNotFoundException(title);
         }
