@@ -1,12 +1,9 @@
 package moviemashup.tmdb;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class MovieInformationClientFactory {
-
-    private final static String MODEL_CLASS_NAME = "moviemashup.movies.tmdb.MovieInformationClient";
 
     private static MovieInformationClient service = null;
 

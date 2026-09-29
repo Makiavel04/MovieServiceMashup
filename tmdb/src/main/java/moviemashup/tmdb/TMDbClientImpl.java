@@ -15,8 +15,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class TMDbClientImpl implements MovieInformationClient {
-    private static final HttpClient client = HttpClient.newHttpClient();
-
     @Override
     public MovieInfoDto findMovieInformation(String title) throws MovieInfoNotFoundException {
         String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
@@ -54,7 +52,6 @@ public class TMDbClientImpl implements MovieInformationClient {
             request = HttpRequest.newBuilder().uri(URI.create(searchUrl)).GET().build();
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
             rootNode = objectMapper.readTree(response.body());
-            JsonNode resultsNode = rootNode.path("results");
             JsonNode movieNode = rootNode.path("results").get(0);
 
             String movieTitle = movieNode.path("title").asText();
