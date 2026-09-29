@@ -1,6 +1,5 @@
 package moviemashup.model.moviemodel;
 
-import moviemashup.model.Main;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -12,7 +11,7 @@ public class MovieModelFactory {
     }
     @SuppressWarnings("rawtypes")
     private static MovieModel getInstance() {
-        try (InputStream input = Main.class.getResourceAsStream("/conf.properties")) {
+        try (InputStream input = MovieModelFactory.class.getResourceAsStream("/conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             Class serviceClass = Class.forName(prop.getProperty("model"));
