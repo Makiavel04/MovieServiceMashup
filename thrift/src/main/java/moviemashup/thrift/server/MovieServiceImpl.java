@@ -30,7 +30,7 @@ public class MovieServiceImpl implements MovieService.Iface {
         MovieModel model = MovieModelFactory.getModel();
         try {
             Movie movie = model.findMovieByTitle(title);
-            return MovieToThriftMovieDtoConversor.toMovieDto(movie);
+            return MovieToThriftMovieDtoConverter.toMovieDto(movie);
         } catch (MovieNotFoundException e) {
             throw new ServiceMovieNotFoundException(e.getMessage());
         }
@@ -44,7 +44,7 @@ public class MovieServiceImpl implements MovieService.Iface {
         logMovieServiceThrift("after getModel");
         List<Movie> movies = model.findMoviesByYear(year);
         logMovieServiceThrift("after find");
-        List<MovieDto> movieDtos = MovieToThriftMovieDtoConversor.toMovieDtos(movies);
+        List<MovieDto> movieDtos = MovieToThriftMovieDtoConverter.toMovieDtos(movies);
         logMovieServiceThrift("before return");
         return movieDtos;
     }

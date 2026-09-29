@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieToThriftMovieDtoConversor {
+public class MovieToThriftMovieDtoConverter {
     public static List<MovieDto> toMovieDtos(List<Movie> movies){
         List<MovieDto> movieDtos = new ArrayList<>(movies.size());
         for(Movie m : movies){
