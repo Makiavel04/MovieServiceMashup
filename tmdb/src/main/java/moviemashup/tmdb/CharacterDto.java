@@ -16,7 +16,7 @@ public class CharacterDto {
 
     private String placeOfBirth;
 
-    public CharacterDto(){
+    public CharacterDto() {
     }
 
     public CharacterDto(String characterName, URL imgurl, String actorName, String birthday, String placeOfBirth) {
@@ -28,7 +28,7 @@ public class CharacterDto {
     }
 
     public CharacterDto(String characterName, URL imgurl, String actorName, String birthday, String deathday, String placeOfBirth) {
-        this(characterName,imgurl,actorName,birthday,placeOfBirth);
+        this(characterName, imgurl, actorName, birthday, placeOfBirth);
         this.deathday = deathday;
     }
 
