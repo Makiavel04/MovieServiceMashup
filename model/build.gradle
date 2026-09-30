@@ -12,3 +12,6 @@ dependencies {
 }
 
 
+java {
+    sourceCompatibility = '17'
+}

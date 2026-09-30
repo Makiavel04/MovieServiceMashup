@@ -23,6 +23,7 @@ public class MovieModelImpl implements MovieModel{
         try (InputStream is = MovieModelImpl.class.getClassLoader().getResourceAsStream("movies_100.json")) {
             this.movies = mapper.readValue(is, new TypeReference<>(){});
         } catch (IOException e) {
+            System.out.println("Error constr: "+e.getMessage());
             throw new RuntimeException(e);
         }
     }
