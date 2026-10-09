@@ -8,10 +8,12 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
+    implementation project(':thrift')
+    implementation 'org.apache.thrift:libthrift:0.19.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 }
-
 
 java {
     sourceCompatibility = '17'
