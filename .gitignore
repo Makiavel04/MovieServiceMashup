@@ -40,3 +40,4 @@ bin/
 .DS_Store
 
 generated
+/tmdb/src/main/resources/conf.properties
