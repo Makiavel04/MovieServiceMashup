@@ -1,5 +1,6 @@
-package moviemashup.client;
+package moviemashup.client.implement;
 
+import moviemashup.client.factory.IClientThrift;
 import moviemashup.thrift.MovieDto;
 import moviemashup.thrift.MovieService;
 import org.apache.thrift.TException;
@@ -13,11 +14,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class ClientWrapper {
+public class ClientThrift implements IClientThrift {
 
-    private MovieService.Client client;
+    private MovieService.Client clientThrift;
     
-    public ClientWrapper() {
+    public ClientThrift() {
         Properties props = new Properties();
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("conf.properties")) {
             props.load(input);
@@ -27,13 +28,14 @@ public class ClientWrapper {
         try {
             TTransport trans = new THttpClient(props.getProperty("movieThriftUrl"));
             TProtocol prot = new TBinaryProtocol(trans);
-            this.client = new MovieService.Client.Factory().getClient(prot);
+            this.clientThrift = new MovieService.Client.Factory().getClient(prot);
         } catch (TTransportException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void addMovie(String title, short year, String visualisationDate, short points) throws TException {
-        client.addMovie(new MovieDto(title,year,visualisationDate,points));
+        clientThrift.addMovie(new MovieDto(title,year,visualisationDate,points));
     }
+
 }

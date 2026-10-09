@@ -5,7 +5,7 @@ import org.apache.commons.cli.*;
 public class Main {
 
     public static void main(String[] args) {
-        ClientWrapper clientWrapper = new ClientWrapper();
+        Client client = new Client();
 
         Options options = new Options();
 
@@ -18,6 +18,16 @@ public class Main {
                 .build();
 
         options.addOption(addOption);
+
+        Option findOption = Option.builder("f")
+                .longOpt("find")
+                .hasArgs()
+                .numberOfArgs(1)
+                .desc("Chercher un film")
+                .argName("titre")
+                .build();
+
+        options.addOption(findOption);
 
         options.addOption(Option.builder("h")
                 .longOpt("help").
@@ -42,13 +52,20 @@ public class Main {
                 short year = Short.parseShort(movieArgs[1]);
                 String visualisationDate = movieArgs[2];
                 short points = Short.parseShort(movieArgs[3]);
-                clientWrapper.addMovie(titre, year, visualisationDate, points);
+                client.addMovie(titre, year, visualisationDate, points);
                 System.out.println("Votre film "+ titre +" a été ajouté !");
             }
 
+            /*if (cmd.hasOption("f")) {
+                String[] movieArgs = cmd.getOptionValues("f");
+
+                String titre = movieArgs[0];
+                System.out.println(client.findMovieInformation(titre).toString());
+            }*/
+
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println(e.getMessage());
         }
     }
 }
