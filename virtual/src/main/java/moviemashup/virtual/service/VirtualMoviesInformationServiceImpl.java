@@ -11,6 +11,6 @@ public class VirtualMoviesInformationServiceImpl implements VirtualMoviesInforma
     @RequestMapping(value="/find", method= RequestMethod.GET)
     @ResponseBody
     public VirtualServiceMovieDTO findMovieInformation(@RequestParam(name="title") String title) {
-
+        CLientTMD
     }
 }
