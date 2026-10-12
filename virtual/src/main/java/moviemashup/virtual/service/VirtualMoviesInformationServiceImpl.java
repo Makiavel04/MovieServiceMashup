@@ -31,25 +31,36 @@ public class VirtualMoviesInformationServiceImpl implements VirtualMoviesInforma
 
         try{
             movieTMDB = clientTMDB.findMovieInformation(title);
+            System.out.println("film TMDB ok");
         } catch (MovieInfoNotFoundException e) {
             movieTMDB = null;
+
+            System.out.println("film TMDB Ko");
         }
 
         try{
             movieThrift = clientThrift.findMovieByTitle(title);
+            System.out.println("film Thrift ok");
         }catch(ServiceMovieNotFoundException e){
+            System.out.println("film Thrift ok");
             movieThrift = null;
         }catch(TException e){
             throw new RuntimeException(e);
         }
+
         if(movieThrift == null && movieTMDB == null){
+            System.out.println("Movie not found");
             throw new VirtualServiceMovieNotFoundException(title);
         }
 
         movieThrift = movieThrift==null ? new MovieDto() : movieThrift;
         movieTMDB = movieTMDB==null ? new MovieInfoDto() : movieTMDB;
 
-        VirtualServiceMovieDTO movie = new VirtualServiceMovieDTO(movieTMDB.getTitle(), movieTMDB.getGenre(), movieTMDB.getPoster_path(), movieTMDB.getYear(), movieTMDB.getCharacters(), movieThrift.getPoints(), movieThrift.getVisualisationDate());
+        String movieTitle = (movieTMDB.getTitle()!=null && !movieTMDB.getTitle().isEmpty()) ? movieTMDB.getTitle() : movieThrift.getTitle();
+        short movieYear = (movieTMDB.getYear()!=-1) ? (short) movieTMDB.getYear() : movieThrift.getYear();
+        VirtualServiceMovieDTO movie = new VirtualServiceMovieDTO(movieTitle , movieTMDB.getGenre(), movieTMDB.getPoster_path(), movieYear, movieTMDB.getCharacters(), movieThrift.getPoints(), movieThrift.getVisualisationDate());
+
+        System.out.println(movie);
 
         return movie;
     }
