@@ -13,7 +13,7 @@ public class VirtualThriftClientFactory {
     @SuppressWarnings("rawtypes")
     private static VirtualThriftClient getInstance() {
 
-        try (InputStream input = VirtualThriftClient.class.getResourceAsStream("/conf.properties")) {
+        try (InputStream input = VirtualThriftClient.class.getResourceAsStream("/virtual-conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             Class serviceClass = Class.forName(prop.getProperty("model"));

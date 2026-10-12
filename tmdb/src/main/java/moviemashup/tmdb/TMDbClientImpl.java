@@ -23,7 +23,7 @@ public class TMDbClientImpl implements MovieInformationClient {
 
         String API_KEY;
 
-        try (InputStream input = TMDbClientImpl.class.getResourceAsStream("/conf.properties")) {
+        try (InputStream input = TMDbClientImpl.class.getResourceAsStream("/tmdb-conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             API_KEY = prop.getProperty("API_KEY");
