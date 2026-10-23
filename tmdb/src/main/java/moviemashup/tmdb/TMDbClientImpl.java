@@ -18,20 +18,20 @@ public class TMDbClientImpl implements MovieInformationClient {
     @Override
     public MovieInfoDto findMovieInformation(String title) throws MovieInfoNotFoundException {
         String API_KEY;
-        try (InputStream input = TMDbClientImpl.class.getResourceAsStream("/conf.properties")) {
+        String API_BASE_URL;
+        String IMAGE_BASE_URL;
+        try (InputStream input = TMDbClientImpl.class.getResourceAsStream("/tmdb-conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             API_KEY = prop.getProperty("API_KEY");
-
+            API_BASE_URL  = prop.getProperty("API_BASE_URL");
+            IMAGE_BASE_URL = prop.getProperty("IMAGE_BASE_URL");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-        String API_BASE_URL = "https://api.themoviedb.org/3/";
         HttpClient client = HttpClient.newHttpClient();
         ObjectMapper objectMapper = new ObjectMapper();
-
         MovieInfoDto movieInfoDto = new MovieInfoDto();
         try {
             Map<Integer, String> genreMap = findMapGenres(client, objectMapper, API_KEY, API_BASE_URL);
