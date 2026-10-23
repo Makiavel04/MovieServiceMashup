@@ -13,7 +13,7 @@ public class MovieInformationClientFactory {
     @SuppressWarnings("rawtypes")
     private static TMDbClientImpl getInstance() {
 
-        try (InputStream input = TMDbClientImpl.class.getResourceAsStream("/conf.properties")) {
+        try (InputStream input = TMDbClientImpl.class.getResourceAsStream("/tmdb-conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             Class serviceClass = Class.forName(prop.getProperty("model"));
