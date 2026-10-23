@@ -41,7 +41,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             System.out.println("OK1");
-            THttpClient transport = new THttpClient("http://localhost:8080/thrift/thrift/movie");
+            THttpClient transport = new THttpClient("http://localhost:8080/thrift/movie");
             // MovieService.Client client = new MovieService.Client(new TBinaryProtocol(transport));
             MovieService.Client client = new MovieService.Client.Factory().getClient(new TBinaryProtocol(transport));
 
