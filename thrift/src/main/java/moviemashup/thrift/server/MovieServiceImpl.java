@@ -17,7 +17,7 @@ public class MovieServiceImpl implements MovieService.Iface {
         System.out.println("Thrift Service : " + msg);
     }
     @Override
-    public void addMovie(MovieDto movieDto) throws TException {
+    public void addMovie(MovieDto movieDto) {
         //Movie movie = MovieToThriftMovieDtoConversor.toMovie(movieDto);
         logMovieServiceThrift("Requested addMovie : " + movieDto.getTitle());
         MovieModel model = MovieModelFactory.getModel();
@@ -25,7 +25,7 @@ public class MovieServiceImpl implements MovieService.Iface {
     }
 
     @Override
-    public MovieDto findMovieByTitle(String title) throws ServiceMovieNotFoundException, TException {
+    public MovieDto findMovieByTitle(String title) throws ServiceMovieNotFoundException {
         logMovieServiceThrift("Requested findMovie : " + title);
         MovieModel model = MovieModelFactory.getModel();
         try {
@@ -37,7 +37,7 @@ public class MovieServiceImpl implements MovieService.Iface {
     }
 
     @Override
-    public List<MovieDto> findMoviesByYear(short year) throws TException {
+    public List<MovieDto> findMoviesByYear(short year) {
         logMovieServiceThrift("Requested Movies by year : " + Integer.toString(year));
 
         MovieModel model = MovieModelFactory.getModel();
