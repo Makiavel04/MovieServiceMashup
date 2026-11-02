@@ -38,3 +38,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+generated
+
+/tmdb/src/main/resources/tmdb-conf.properties
