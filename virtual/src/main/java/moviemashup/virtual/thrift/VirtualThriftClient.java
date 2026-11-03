@@ -17,28 +17,20 @@ public class VirtualThriftClient {
 
     public MovieDto findMovieByTitle(String title) throws TException {
         MovieService.Client client = getClient();
-        TTransport transport = client.getInputProtocol().getTransport();
-
-        try { transport.open();}
-        catch (TTransportException e) {throw new RuntimeException(e);}
-        TProtocol protocol = new  TBinaryProtocol(transport);
-
-        transport.close();
         return client.findMovieByTitle(title);
     }
 
     private static MovieService.Client getClient() {
         String THRIFT_BASE_URL;
-        try (InputStream input = VirtualThriftClient.class.getResourceAsStream("/tmdb-conf.properties")) {
+        try (InputStream input = VirtualThriftClient.class.getResourceAsStream("/virtual-conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
-            THRIFT_BASE_URL  = prop.getProperty("API_BASE_URL");
+            THRIFT_BASE_URL  = prop.getProperty("thrift_url");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         try {
-
-            TTransport transport = new THttpClient(THRIFT_BASE_URL + "/movie");
+            TTransport transport = new THttpClient(THRIFT_BASE_URL + "/thrift/movie");
             TProtocol protocol = new TBinaryProtocol(transport);
 
             return new MovieService.Client(protocol);

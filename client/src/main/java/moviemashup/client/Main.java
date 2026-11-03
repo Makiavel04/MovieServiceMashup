@@ -1,10 +1,16 @@
 package moviemashup.client;
 
 import org.apache.commons.cli.*;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 public class Main {
 
     public static void main(String[] args) {
+        BasicConfigurator.configure();
+        Logger.getRootLogger().setLevel(Level.INFO);
+
         Client client = new Client();
 
         Options options = new Options();
@@ -56,12 +62,12 @@ public class Main {
                 System.out.println("Votre film "+ titre +" a été ajouté !");
             }
 
-            /*if (cmd.hasOption("f")) {
+            if (cmd.hasOption("f")) {
                 String[] movieArgs = cmd.getOptionValues("f");
 
                 String titre = movieArgs[0];
                 System.out.println(client.findMovieInformation(titre).toString());
-            }*/
+            }
 
 
         } catch (Exception e) {

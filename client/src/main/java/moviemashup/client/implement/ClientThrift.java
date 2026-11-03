@@ -26,7 +26,7 @@ public class ClientThrift implements IClientThrift {
             throw new RuntimeException();
         }
         try {
-            TTransport trans = new THttpClient(props.getProperty("movieThriftUrl"));
+            TTransport trans = new THttpClient(props.getProperty("movieThriftUrl") + "/thrift/movie");
             TProtocol prot = new TBinaryProtocol(trans);
             this.clientThrift = new MovieService.Client.Factory().getClient(prot);
         } catch (TTransportException e) {
