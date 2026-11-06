@@ -3,11 +3,11 @@ package moviemashup.client.implement;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import moviemashup.client.dto.ClientMovieDTO;
+import moviemashup.client.exception.ClientMovieNotFoundException;
 import moviemashup.client.factory.IClientVirtual;
 import org.apache.hc.client5.http.fluent.Request;
 import org.apache.hc.core5.http.ClassicHttpResponse;
-import moviemashup.virtual.dto.VirtualServiceMovieDTO;
-import moviemashup.virtual.exception.VirtualServiceMovieNotFoundException;
 import org.apache.hc.core5.http.HttpStatus;
 
 import java.io.IOException;
@@ -33,20 +33,20 @@ public class ClientVirtual implements IClientVirtual {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    public VirtualServiceMovieDTO findMovieInformation(String title) throws IOException, VirtualServiceMovieNotFoundException {
+    public ClientMovieDTO findMovieInformation(String title) throws IOException, ClientMovieNotFoundException {
         ClassicHttpResponse response = (ClassicHttpResponse) Request.get(url +"/movie/find?title="
                             + URLEncoder.encode(title, "UTF-8")).
                     execute().returnResponse();
 
         int statusCode = response.getCode();
         if (statusCode == HttpStatus.SC_NOT_FOUND) {
-            throw new VirtualServiceMovieNotFoundException(title);
+            throw new ClientMovieNotFoundException(title);
         }
 
         if (statusCode < 200 || statusCode >= 300) {
             throw new IOException("Erreur API inattendue : " + statusCode);
         }
 
-        return mapper.readValue(response.getEntity().getContent(), VirtualServiceMovieDTO.class);
+        return mapper.readValue(response.getEntity().getContent(), ClientMovieDTO.class);
     }
 }

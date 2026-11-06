@@ -1,10 +1,10 @@
 package moviemashup.client.factory;
 
-import moviemashup.virtual.dto.VirtualServiceMovieDTO;
-import moviemashup.virtual.exception.VirtualServiceMovieNotFoundException;
+import moviemashup.client.dto.ClientMovieDTO;
+import moviemashup.client.exception.ClientMovieNotFoundException;
 
 import java.io.IOException;
 
 public interface IClientVirtual {
-    VirtualServiceMovieDTO findMovieInformation(String title) throws IOException, VirtualServiceMovieNotFoundException;
+    ClientMovieDTO findMovieInformation(String title) throws IOException, ClientMovieNotFoundException;
 }
