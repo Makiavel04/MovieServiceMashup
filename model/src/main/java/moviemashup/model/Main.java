@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
         /*MovieModelFactory.getModel().addMovie("test", (short) 2026, LocalDate.now(),(short)6);
+        MovieModelFactory.getModel().addMovie("test", (short) 2026, LocalDate.now(),(short)5);
         System.out.println("Test findMovieByTitle");
         try {
             Movie m = MovieModelFactory.getModel().findMovieByTitle("test");

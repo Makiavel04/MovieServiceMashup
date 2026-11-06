@@ -32,6 +32,12 @@ public class MovieModelImpl implements MovieModel{
     public synchronized void addMovie(String title, short year, LocalDate visualisationDate, short punctuation) {
         VisualisationInfo visualisationInfo = new VisualisationInfo(punctuation,visualisationDate);
         Movie movie = new Movie(year,title,visualisationInfo);
+        for(Movie m : movies) {
+            if (m.getTitle().equals(title)) {
+                movies.remove(m);
+                break;
+            }
+        }
         movies.add(movie);
     }
 
