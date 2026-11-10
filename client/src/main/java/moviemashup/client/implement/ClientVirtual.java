@@ -9,6 +9,8 @@ import moviemashup.client.factory.IClientVirtual;
 import org.apache.hc.client5.http.fluent.Request;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.HttpStatus;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +24,7 @@ public class ClientVirtual implements IClientVirtual {
 
     public ClientVirtual() {
         Properties props = new Properties();
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("conf.properties")) {
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("client-conf.properties")) {
             props.load(input);
             url = props.getProperty("movieVirtualUrl");
         } catch (IOException ex) {
@@ -39,12 +41,19 @@ public class ClientVirtual implements IClientVirtual {
                     execute().returnResponse();
 
         int statusCode = response.getCode();
+
         if (statusCode == HttpStatus.SC_NOT_FOUND) {
             throw new ClientMovieNotFoundException(title);
         }
 
         if (statusCode < 200 || statusCode >= 300) {
-            throw new IOException("Erreur API inattendue : " + statusCode);
+            String body;
+            try{
+                body = EntityUtils.toString(response.getEntity());
+            }catch(ParseException e){
+                throw new IOException("Unexpected error : error while reading the error response.");
+            }
+            throw new IOException("Unexpected error : " + body);
         }
 
         return mapper.readValue(response.getEntity().getContent(), ClientMovieDTO.class);

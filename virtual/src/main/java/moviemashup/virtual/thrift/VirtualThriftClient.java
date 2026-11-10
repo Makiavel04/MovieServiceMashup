@@ -30,7 +30,7 @@ public class VirtualThriftClient {
             throw new RuntimeException(e);
         }
         try {
-            TTransport transport = new THttpClient(THRIFT_BASE_URL + "/thrift/movie");
+            TTransport transport = new THttpClient(THRIFT_BASE_URL + "/movie");
             TProtocol protocol = new TBinaryProtocol(transport);
 
             return new MovieService.Client(protocol);

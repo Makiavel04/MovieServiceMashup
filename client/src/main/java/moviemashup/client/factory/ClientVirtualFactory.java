@@ -11,7 +11,7 @@ public class ClientVirtualFactory {
     }
     @SuppressWarnings("rawtypes")
     private static IClientVirtual getInstance() {
-        try (InputStream input = ClientVirtualFactory.class.getResourceAsStream("/conf.properties")) {
+        try (InputStream input = ClientVirtualFactory.class.getResourceAsStream("/client-conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             Class serviceClass = Class.forName(prop.getProperty("clientVirtual"));

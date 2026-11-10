@@ -20,13 +20,13 @@ public class ClientThrift implements IClientThrift {
     
     public ClientThrift() {
         Properties props = new Properties();
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("conf.properties")) {
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("client-conf.properties")) {
             props.load(input);
         } catch (IOException ex) {
             throw new RuntimeException();
         }
         try {
-            TTransport trans = new THttpClient(props.getProperty("movieThriftUrl") + "/thrift/movie");
+            TTransport trans = new THttpClient(props.getProperty("movieThriftUrl") + "/movie");
             TProtocol prot = new TBinaryProtocol(trans);
             this.clientThrift = new MovieService.Client.Factory().getClient(prot);
         } catch (TTransportException e) {
