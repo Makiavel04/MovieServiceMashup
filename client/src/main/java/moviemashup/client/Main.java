@@ -19,8 +19,8 @@ public class Main {
                 .longOpt("add")
                 .hasArgs()
                 .numberOfArgs(4)
-                .desc("Ajouter un film")
-                .argName("titre> <annee> <date_de_visionnage> <note")
+                .desc("Add a film")
+                .argName("title> <year> <watch_date> <grade")
                 .build();
 
         options.addOption(addOption);
@@ -29,15 +29,15 @@ public class Main {
                 .longOpt("find")
                 .hasArgs()
                 .numberOfArgs(1)
-                .desc("Chercher un film")
-                .argName("titre")
+                .desc("Search a film")
+                .argName("title")
                 .build();
 
         options.addOption(findOption);
 
         options.addOption(Option.builder("h")
                 .longOpt("help").
-                desc("Afficher l'aide")
+                desc("Show help")
                 .build());
 
         CommandLineParser parser = new DefaultParser();
@@ -59,7 +59,7 @@ public class Main {
                 String visualisationDate = movieArgs[2];
                 short points = Short.parseShort(movieArgs[3]);
                 client.addMovie(titre, year, visualisationDate, points);
-                System.out.println("Votre film "+ titre +" a été ajouté !");
+                System.out.println("Your file "+ titre +" has been added !");
             }
 
             if (cmd.hasOption("f")) {

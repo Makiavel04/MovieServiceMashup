@@ -11,7 +11,7 @@ public class MovieModelFactory {
     }
     @SuppressWarnings("rawtypes")
     private static MovieModel getInstance() {
-        try (InputStream input = MovieModelFactory.class.getResourceAsStream("/conf.properties")) {
+        try (InputStream input = MovieModelFactory.class.getResourceAsStream("/model-conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             Class serviceClass = Class.forName(prop.getProperty("model"));

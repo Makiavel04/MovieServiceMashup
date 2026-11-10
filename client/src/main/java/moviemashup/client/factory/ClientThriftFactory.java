@@ -12,7 +12,7 @@ public class ClientThriftFactory {
     }
     @SuppressWarnings("rawtypes")
     private static IClientThrift getInstance() {
-        try (InputStream input = ClientThriftFactory.class.getResourceAsStream("/conf.properties")) {
+        try (InputStream input = ClientThriftFactory.class.getResourceAsStream("/client-conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             Class serviceClass = Class.forName(prop.getProperty("clientThrift"));
