@@ -17,7 +17,7 @@ public class VirtualThriftClientFactory {
             Properties prop = new Properties();
             prop.load(input);
             Class serviceClass = Class.forName(prop.getProperty("model"));
-            return (VirtualThriftClientImpl) serviceClass.getDeclaredConstructor().newInstance();
+            return (IVirtualThriftClient) serviceClass.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
