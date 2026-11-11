@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class VirtualThriftClient {
+public class VirtualThriftClientImpl implements IVirtualThriftClient{
 
     public MovieDto findMovieByTitle(String title) throws TException {
         MovieService.Client client = getClient();
@@ -22,7 +22,7 @@ public class VirtualThriftClient {
 
     private static MovieService.Client getClient() {
         String THRIFT_BASE_URL;
-        try (InputStream input = VirtualThriftClient.class.getResourceAsStream("/virtual-conf.properties")) {
+        try (InputStream input = VirtualThriftClientImpl.class.getResourceAsStream("/virtual-conf.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             THRIFT_BASE_URL  = prop.getProperty("thrift_url");
