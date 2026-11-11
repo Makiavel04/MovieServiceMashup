@@ -5,13 +5,13 @@ import java.util.Properties;
 
 public class VirtualThriftClientFactory {
 
-    private static VirtualThriftClientImpl service = null;
+    private static IVirtualThriftClient service = null;
 
     private VirtualThriftClientFactory() {
     }
 
     @SuppressWarnings("rawtypes")
-    private static VirtualThriftClientImpl getInstance() {
+    private static IVirtualThriftClient getInstance() {
 
         try (InputStream input = VirtualThriftClientImpl.class.getResourceAsStream("/virtual-conf.properties")) {
             Properties prop = new Properties();
@@ -24,7 +24,7 @@ public class VirtualThriftClientFactory {
 
     }
 
-    public synchronized static VirtualThriftClientImpl getClient() {
+    public synchronized static IVirtualThriftClient getClient() {
         if (service == null) {
             service = getInstance();
         }

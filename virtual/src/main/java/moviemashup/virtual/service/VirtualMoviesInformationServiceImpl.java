@@ -8,6 +8,7 @@ import moviemashup.tmdb.MovieInformationClientFactory;
 import moviemashup.tmdb.exceptions.MovieInfoNotFoundException;
 import moviemashup.virtual.dto.VirtualServiceMovieDTO;
 import moviemashup.virtual.exception.VirtualServiceMovieNotFoundException;
+import moviemashup.virtual.thrift.IVirtualThriftClient;
 import moviemashup.virtual.thrift.VirtualThriftClientImpl;
 import moviemashup.virtual.thrift.VirtualThriftClientFactory;
 import org.apache.thrift.TException;
@@ -22,7 +23,7 @@ public class VirtualMoviesInformationServiceImpl implements VirtualMoviesInforma
     @ResponseBody
     public VirtualServiceMovieDTO findMovieInformation(@RequestParam(name="title") String title) throws VirtualServiceMovieNotFoundException {
         MovieInformationClient clientTMDB = MovieInformationClientFactory.getClient();
-        VirtualThriftClientImpl clientThrift = VirtualThriftClientFactory.getClient();
+        IVirtualThriftClient clientThrift = VirtualThriftClientFactory.getClient();
 
         MovieInfoDto movieTMDB;
         MovieDto movieThrift;
