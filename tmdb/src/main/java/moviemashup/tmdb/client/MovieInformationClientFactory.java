@@ -1,4 +1,4 @@
-package moviemashup.tmdb;
+package moviemashup.tmdb.client;
 
 import java.io.InputStream;
 import java.util.Properties;

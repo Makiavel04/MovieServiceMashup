@@ -1,4 +1,4 @@
-package moviemashup.client.factory;
+package moviemashup.client.virtual;
 
 import java.io.InputStream;
 import java.util.Properties;

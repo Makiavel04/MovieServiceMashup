@@ -1,4 +1,4 @@
-package moviemashup.client.factory;
+package moviemashup.client.thrift;
 
 import org.apache.thrift.TException;
 

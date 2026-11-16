@@ -1,4 +1,4 @@
-package moviemashup.tmdb;
+package moviemashup.tmdb.dto;
 
 import java.net.URL;
 import java.util.List;

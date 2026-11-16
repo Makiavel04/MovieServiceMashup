@@ -1,7 +1,9 @@
-package moviemashup.tmdb;
+package moviemashup.tmdb.client;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import moviemashup.tmdb.dto.CharacterDto;
+import moviemashup.tmdb.dto.MovieInfoDto;
 import moviemashup.tmdb.exceptions.MovieInfoNotFoundException;
 
 import java.io.IOException;

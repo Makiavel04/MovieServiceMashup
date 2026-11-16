@@ -1,4 +1,4 @@
-package moviemashup.thrift.server;
+package moviemashup.thrift.server.service;
 
 import moviemashup.model.entities.Movie;
 import moviemashup.model.exception.MovieNotFoundException;
@@ -7,7 +7,7 @@ import moviemashup.model.moviemodel.MovieModelFactory;
 import moviemashup.thrift.MovieDto;
 import moviemashup.thrift.MovieService;
 import moviemashup.thrift.ServiceMovieNotFoundException;
-import org.apache.thrift.TException;
+import moviemashup.thrift.server.utils.MovieToThriftMovieDtoConverter;
 
 import java.time.LocalDate;
 import java.util.List;

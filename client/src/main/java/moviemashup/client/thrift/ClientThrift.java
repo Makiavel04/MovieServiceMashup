@@ -1,6 +1,5 @@
-package moviemashup.client.implement;
+package moviemashup.client.thrift;
 
-import moviemashup.client.factory.IClientThrift;
 import moviemashup.thrift.MovieDto;
 import moviemashup.thrift.MovieService;
 import org.apache.thrift.TException;
