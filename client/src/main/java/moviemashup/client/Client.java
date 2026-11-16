@@ -2,10 +2,10 @@ package moviemashup.client;
 
 import moviemashup.client.dto.ClientMovieDTO;
 import moviemashup.client.exception.ClientMovieNotFoundException;
-import moviemashup.client.factory.ClientThriftFactory;
-import moviemashup.client.factory.ClientVirtualFactory;
-import moviemashup.client.factory.IClientThrift;
-import moviemashup.client.factory.IClientVirtual;
+import moviemashup.client.thrift.ClientThriftFactory;
+import moviemashup.client.virtual.ClientVirtualFactory;
+import moviemashup.client.thrift.IClientThrift;
+import moviemashup.client.virtual.IClientVirtual;
 import org.apache.thrift.TException;
 import java.io.IOException;
 

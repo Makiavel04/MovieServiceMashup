@@ -1,7 +1,7 @@
 package moviemashup.virtual.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import moviemashup.tmdb.CharacterDto;
+import moviemashup.tmdb.dto.CharacterDto;
 
 import java.net.URL;
 import java.util.List;

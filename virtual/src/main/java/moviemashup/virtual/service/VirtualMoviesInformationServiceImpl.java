@@ -2,14 +2,13 @@ package moviemashup.virtual.service;
 
 import moviemashup.thrift.MovieDto;
 import moviemashup.thrift.ServiceMovieNotFoundException;
-import moviemashup.tmdb.MovieInfoDto;
-import moviemashup.tmdb.MovieInformationClient;
-import moviemashup.tmdb.MovieInformationClientFactory;
+import moviemashup.tmdb.dto.MovieInfoDto;
+import moviemashup.tmdb.client.MovieInformationClient;
+import moviemashup.tmdb.client.MovieInformationClientFactory;
 import moviemashup.tmdb.exceptions.MovieInfoNotFoundException;
 import moviemashup.virtual.dto.VirtualServiceMovieDTO;
 import moviemashup.virtual.exception.VirtualServiceMovieNotFoundException;
 import moviemashup.virtual.thrift.IVirtualThriftClient;
-import moviemashup.virtual.thrift.VirtualThriftClientImpl;
 import moviemashup.virtual.thrift.VirtualThriftClientFactory;
 import org.apache.thrift.TException;
 import org.springframework.web.bind.annotation.*;

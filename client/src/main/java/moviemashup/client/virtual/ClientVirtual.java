@@ -1,11 +1,10 @@
-package moviemashup.client.implement;
+package moviemashup.client.virtual;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import moviemashup.client.dto.ClientMovieDTO;
 import moviemashup.client.exception.ClientMovieNotFoundException;
-import moviemashup.client.factory.IClientVirtual;
 import org.apache.hc.client5.http.fluent.Request;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.HttpStatus;

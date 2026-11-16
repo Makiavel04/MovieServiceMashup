@@ -1,4 +1,4 @@
-package moviemashup.client.factory;
+package moviemashup.client.virtual;
 
 import moviemashup.client.dto.ClientMovieDTO;
 import moviemashup.client.exception.ClientMovieNotFoundException;

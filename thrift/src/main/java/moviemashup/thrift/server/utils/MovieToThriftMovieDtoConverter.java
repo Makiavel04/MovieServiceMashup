@@ -1,4 +1,4 @@
-package moviemashup.thrift.server;
+package moviemashup.thrift.server.utils;
 
 import moviemashup.model.entities.VisualisationInfo;
 import moviemashup.thrift.MovieDto;

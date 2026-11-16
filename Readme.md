@@ -22,7 +22,7 @@ Server
        API_KEY=YOUR_KEY
        API_BASE_URL=https://api.themoviedb.org/3/
        IMAGE_BASE_URL=https://image.tmdb.org/t/p/w500
-       model=moviemashup.tmdb.TMDbClientImpl
+       model=moviemashup.tmdb.client.TMDbClientImpl
 
    Do not commit your API key.
 

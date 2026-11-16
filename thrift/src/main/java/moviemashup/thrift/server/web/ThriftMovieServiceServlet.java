@@ -1,11 +1,12 @@
-package moviemashup.thrift.server;
+package moviemashup.thrift.server.web;
 
 import moviemashup.thrift.MovieService;
+import moviemashup.thrift.server.service.MovieServiceImpl;
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocolFactory;
 
-public class ThriftMovieServiceServlet extends ThriftHttpServletTemplate{
+public class ThriftMovieServiceServlet extends ThriftHttpServletTemplate {
 
 
     public ThriftMovieServiceServlet() {

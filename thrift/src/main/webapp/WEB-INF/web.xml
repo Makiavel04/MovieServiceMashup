@@ -13,7 +13,7 @@
 
     <servlet>
         <servlet-name>ThriftMovieServiceServlet</servlet-name>
-        <servlet-class>moviemashup.thrift.server.ThriftMovieServiceServlet</servlet-class>
+        <servlet-class>moviemashup.thrift.server.web.ThriftMovieServiceServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

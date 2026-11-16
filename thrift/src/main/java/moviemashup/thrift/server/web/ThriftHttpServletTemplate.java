@@ -1,4 +1,4 @@
-package moviemashup.thrift.server;
+package moviemashup.thrift.server.web;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
